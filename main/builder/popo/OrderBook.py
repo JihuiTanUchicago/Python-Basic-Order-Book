@@ -1,17 +1,17 @@
 from dataclasses import dataclass, field
-import heapq
 
 from builder.popo.Order import Order
 from builder.popo.Side import Side
 
 
+"""
+class to represent an order book
+here we implement the Time-Price priority 
+L2 order book
+"""
 @dataclass
 class OrderBook:
-    """
-    class to represent an order book
-    here we implement the Time-Price priority 
-    L2 order book
-    """
+    
     _symbol : str
     _bids : list[Order] = field(default_factory=list) # Max-heap (Negative Prices)
     _asks : list[Order] = field(default_factory=list) # Min-heap (Normal Prices)
