@@ -14,10 +14,10 @@ class SideBuilder:
         print(f"Receive buildSide request for buildSideInput: {buildSideInput}")
 
         sideString = buildSideInput.sideString
-        if sideString == "BUY":
-            side = Side.BUY
-        elif sideString == "SELL":
-            side = Side.SELL
+        if sideString == "BID":
+            side = Side.BID
+        elif sideString == "ASK":
+            side = Side.ASK
         else:
             raise ValueError(f"Invalid sideString: {sideString}")
         print(f"Successfully construct side: {side}")

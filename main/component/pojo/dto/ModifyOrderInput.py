@@ -1,16 +1,13 @@
 from dataclasses import dataclass
 
-from builder.popo.Side import Side
-
 """
 dto class to build an order
 """
 @dataclass
-class BuildOrderInput:
+class ModifyOrderInput:
     _id: str | None = None
     _price: float | None = None
     _quantity: int | None = None
-    _side: Side | None = None #BUY or SELL
 
     @property
     def id(self):
@@ -24,10 +21,6 @@ class BuildOrderInput:
     def quantity(self):
         return self._quantity
     
-    @property
-    def side(self):
-        return self._side
-    
     @id.setter
     def id(self, id):
         self._id = id
@@ -39,7 +32,3 @@ class BuildOrderInput:
     @quantity.setter
     def quantity(self, quantity):
         self._quantity = quantity
-    
-    @side.setter
-    def side(self, side):
-        self._side = side

@@ -5,5 +5,5 @@ Side of the order
 """
 class Side(Enum):
     
-    BUY = "BUY"
-    SELL = "SELL"
+    BID = "BID"
+    ASK = "ASK"

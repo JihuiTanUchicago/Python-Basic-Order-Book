@@ -6,7 +6,7 @@ Side of the order
 @dataclass
 class BuildSideInput():
     
-    _sideString : str | None = None # Can be "BUY" or "SELL" ONLY
+    _sideString : str | None = None # Can be "Bid" or "Ask" ONLY
 
     @property
     def sideString(self):

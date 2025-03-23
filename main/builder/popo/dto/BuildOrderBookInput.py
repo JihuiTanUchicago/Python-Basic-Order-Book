@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from collections import OrderedDict, defaultdict
 
 from builder.popo.Order import Order
 
@@ -7,30 +8,52 @@ from builder.popo.Order import Order
 class BuildOrderBookInput:
 
     _symbol : str | None = None
-    _bids : list[Order] | None = None # Max-heap (Negative Prices)
-    _asks : list[Order] | None = None # Min-heap (Normal Prices)
+    _bidsPriceToOrderMap: dict[float, OrderedDict[str, list[Order]]] = \
+        field(default_factory=lambda: defaultdict(OrderedDict))
+    _asksPriceToOrderMap: dict[float, OrderedDict[str, list[Order]]] = \
+        field(default_factory=lambda: defaultdict(OrderedDict))
+    _bidsPriceHeap : list[float] = field(default_factory=list)
+    _asksPriceHeap : list[float] = field(default_factory=list)
 
     @property
     def symbol(self):
         return self._symbol
 
     @property
-    def bids(self):
-        return self._bids
+    def bidsPriceToOrderMap(self):
+        return self._bidsPriceToOrderMap
 
     @property
-    def asks(self):
-        return self._asks
+    def asksPriceToOrderMap(self):
+        return self._asksPriceToOrderMap
+
+    @property
+    def bidsPriceHeap(self):
+        return self._bidsPriceHeap
+
+    @property
+    def asksPriceHeap(self):
+        return self._asksPriceHeap
     
     @symbol.setter
     def symbol(self, symbol):
         self._symbol = symbol
 
-    @bids.setter
-    def bids(self, bids):
-        self._bids = bids
+    @bidsPriceToOrderMap.setter
+    def bidsPriceToOrderMap(self, bidsPriceToOrderMap):
+        self._bidsPriceToOrderMap = bidsPriceToOrderMap
 
-    @asks.setter
-    def asks(self, asks):
-        self._asks = asks
+    @asksPriceToOrderMap.setter
+    def asksPriceToOrderMap(self, asksPriceToOrderMap):
+        self._asksPriceToOrderMap = asksPriceToOrderMap
+
+    @bidsPriceHeap.setter
+    def bidsPriceHeap(self, bidsPriceHeap):
+        self._bidsPriceHeap = bidsPriceHeap
+
+    @asksPriceHeap.setter
+    def asksPriceHeap(self, asksPriceHeap):
+        self._asksPriceHeap = asksPriceHeap
+
+    
 

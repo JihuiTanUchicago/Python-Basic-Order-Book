@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
+from collections import OrderedDict
 
 from builder.popo.Order import Order
-from builder.popo.Side import Side
 
 
 """
@@ -13,18 +13,30 @@ L3 order book
 class OrderBook:
     
     _symbol : str
-    _bids : list[Order] = field(default_factory=list) # Max-heap (Negative Prices)
-    _asks : list[Order] = field(default_factory=list) # Min-heap (Normal Prices)
+    _bidsPriceToOrderMap : dict[float, OrderedDict[str, list[Order]]]
+    _bidsPriceHeap : list[float] = field(default_factory=list) # positive numbers for Min Heap
+    _asksPriceToOrderMap : dict[float, OrderedDict[str, list[Order]]]
+    _asksPriceHeap : list[float] = field(default_factory=list) # negative numbers for Max Heap
 
     @property
     def symbol(self):
         return self._symbol
 
     @property
-    def bids(self):
-        return self._bids
+    def bidsPriceToOrderMap(self):
+        return self._bidsPriceToOrderMap
 
     @property
-    def asks(self):
-        return self._asks
+    def asksPriceToOrderMap(self):
+        return self._asksPriceToOrderMap
+    
+    @property
+    def bidsPriceHeap(self):
+        return self._bidsPriceHeap
+
+    @property
+    def asksPriceHeap(self):
+        return self._asksPriceHeap
+    
+
 

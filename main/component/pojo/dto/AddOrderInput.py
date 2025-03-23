@@ -6,8 +6,9 @@ from builder.popo.Side import Side
 dto class to build an order
 """
 @dataclass
-class BuildOrderInput:
+class AddOrderInput:
     _id: str | None = None
+    _symbol: str | None = None
     _price: float | None = None
     _quantity: int | None = None
     _side: Side | None = None #BUY or SELL
@@ -15,6 +16,10 @@ class BuildOrderInput:
     @property
     def id(self):
         return self._id
+    
+    @property
+    def symbol(self):
+        return self._symbol
     
     @property
     def price(self):
@@ -31,6 +36,10 @@ class BuildOrderInput:
     @id.setter
     def id(self, id):
         self._id = id
+
+    @symbol.setter
+    def symbol(self, symbol):
+        self._symbol = symbol
         
     @price.setter
     def price(self, price):

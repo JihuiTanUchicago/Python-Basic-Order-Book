@@ -7,7 +7,7 @@ class to represent an order
 """
 @dataclass
 class Order:
-    
+    _id: str
     _price: float
     _quantity: int
     _side: Side #BUY or SELL
