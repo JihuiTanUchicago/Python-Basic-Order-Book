@@ -7,7 +7,7 @@ from builder.popo.Side import Side
 """
 class to represent an order book
 here we implement the Time-Price priority 
-L2 order book
+L3 order book
 """
 @dataclass
 class OrderBook:
