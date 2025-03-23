@@ -1,4 +1,4 @@
-Small Exercise for Myself to Build a Order Matching Engine.
+[Ongoing] Small Exercise for Myself to Build a Order Matching Engine.
 
 - Activity Layer: Should handle logic to receive data from exchanges(upstream service), convert data to internally used POPOs, and pass to component
 - Component Layer: Business logics for order matching.
